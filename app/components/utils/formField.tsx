@@ -1,27 +1,24 @@
 "use client";
 
 import { IaddCreditCard } from "@/app/services/IAddCreditCard";
-import { addCreditCard } from "@/app/services/addCreditCard";
+import { handleSubmitData } from "@/app/services/handleSubmitData";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export function FormField(){	
 
 	const { register, handleSubmit } = useForm<IaddCreditCard>();
+	const [value, setValue] = useState("");
 
-	const handleSubmitData = async ({ ownerName, FAN, expiryDate, CVV}: IaddCreditCard) => {
-		const dataToSend: IaddCreditCard = {
-			CVV,
-			FAN,
-			ownerName,
-			expiryDate,
-			type: FAN.startsWith("34") || FAN.startsWith("37") ? 
-				"AMERICAN_EXPRESS_CARD" : "COMMON_CREDIT_CARD"
+	const handleInputDateChange = (inputValue: string) => {
+		setValue(inputValue);
+	}
+
+	useEffect(() => {
+		if(value.length === 2 && !value.includes("/")){
+			setValue(value + "/");
 		}
-
-		console.log(dataToSend)
-
-		await addCreditCard(dataToSend);
-	};
+	}, [value])
 
 	return(
 		<form
@@ -41,6 +38,7 @@ export function FormField(){
 						placeholder="John Doe"
 						maxLength={19}
 						className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
+						required
 					/>
 				</div>
 			</div>
@@ -58,6 +56,7 @@ export function FormField(){
 						placeholder="1234 1234 1234 1234"
 						maxLength={19}
 						className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
+						required
 					/>
 				</div>
 			</div>
@@ -74,7 +73,10 @@ export function FormField(){
 							name="expiryDate"
 							placeholder="MM/YY"
 							maxLength={5}
+							value={value}
 							className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
+							required
+							onChange={e => handleInputDateChange(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -91,6 +93,7 @@ export function FormField(){
 							placeholder="..."
 							maxLength={4}
 							className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
+							required
 						/>
 					</div>
 				</div>
