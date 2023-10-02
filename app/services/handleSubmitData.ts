@@ -14,7 +14,7 @@ export const handleSubmitData = async ({ ownerName, FAN, expiryDate, CVV}: IaddC
 	
 		await addCreditCard(dataToSend);
 
-		alert("credit card add!");
+		alert("credit card added!");
 	}
 	catch(err){
 		alert("invalid credit card informations!");
