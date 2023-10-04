@@ -1,5 +1,8 @@
+import { AxiosError } from "axios";
 import { IaddCreditCard } from "./IAddCreditCard";
 import { addCreditCard } from "./addCreditCard";
+import { IErrorResponse } from "../errors/IErrorResponse";
+import toast from "react-hot-toast";
 
 export const handleSubmitData = async ({ ownerName, FAN, expiryDate, CVV}: IaddCreditCard) => {
 	try{
@@ -19,9 +22,13 @@ export const handleSubmitData = async ({ ownerName, FAN, expiryDate, CVV}: IaddC
 	
 		await addCreditCard(dataToSend);
 
-		alert("credit card added!");
+		toast.success("credit card added!");
 	}
 	catch(err){
-		alert("invalid credit card informations!");
+		if(err instanceof AxiosError){
+			const errorResponse: IErrorResponse = err.response?.data ? err.response?.data : "Something is wrong. Try again later!";
+			console.log(errorResponse)
+			toast.error(errorResponse.title);
+		}
 	}
 };

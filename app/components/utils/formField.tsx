@@ -38,7 +38,7 @@ export function FormField(){
 						placeholder="John Doe"
 						maxLength={19}
 						className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
-						
+						required
 					/>
 				</div>
 			</div>
@@ -56,7 +56,7 @@ export function FormField(){
 						placeholder="1234 1234 1234 1234"
 						maxLength={19}
 						className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
-						
+						required
 					/>
 				</div>
 			</div>
@@ -75,8 +75,8 @@ export function FormField(){
 							maxLength={5}
 							value={value}
 							className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
-							
 							onChange={e => handleInputDateChange(e.target.value)}
+							required
 						/>
 					</div>
 				</div>
@@ -93,7 +93,7 @@ export function FormField(){
 							placeholder="..."
 							maxLength={4}
 							className="p-3 w-full h-10 rounded-lg bg-[#E2E6EE] text-[#9EA8BD] border-[1px] border-[#E2E6EE] focus:shadow-md focus:bg-white focus:outline-none transition-all"
-							
+							required
 						/>
 					</div>
 				</div>
