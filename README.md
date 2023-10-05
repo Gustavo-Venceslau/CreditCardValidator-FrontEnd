@@ -24,9 +24,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can copy the information above and try adding your own credit card:
 
  - full Name: your name
-- credit card: 4916814538539270 or 3433409565917926 (AMEX)
+- credit card: 2720999989955578 or 3440215794378998 (AMEX)
 - expiry date: 08/24
-- cvv: 123
+- cvv: 123 or 1234 (amex)
 
 after that click and submit and see your credit card be successfully added!
 
